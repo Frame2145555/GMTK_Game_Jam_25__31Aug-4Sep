@@ -4,16 +4,15 @@ public class Testing : MonoBehaviour
 {
     [SerializeField] RopeVerlet rope;
 
+    [SerializeField] Transform headAttachment;
+    [SerializeField] Transform tailAttachment;
+
     void Update()
     {
-        rope.TailFollowTarget = transform.position;
+        rope.FixedHeadTo(headAttachment);
 
-        rope.HeadFollowTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        rope.FixedTailTo(tailAttachment);
 
-        if (rope.Length() > rope.LengthNormal() * 1.5)
-        {
-            Vector2 dir = (transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition)).normalized;
-            transform.transform.position -= (Vector3)(dir * 10 * Time.deltaTime);
-        }
+
     }
 }
