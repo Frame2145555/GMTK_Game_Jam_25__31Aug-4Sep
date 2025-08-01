@@ -126,12 +126,6 @@ public class RopeVerlet : MonoBehaviour
     void Update()
     {
         DrawRope();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Apply impulse to the middle of the rope
-            AddMomentum(_numOfRopeSegments / 2, new Vector2(3f, 5f));
-        }
     }
     void FixedUpdate()
     {
@@ -146,15 +140,6 @@ public class RopeVerlet : MonoBehaviour
                 HandleCollisions();
             }
         }
-    }
-    public void AddMomentum(int segmentIndex, Vector2 impulse)
-    {
-        if (segmentIndex < 0 || segmentIndex >= _ropeSegments.Count)
-            return;
-
-        RopeSegment seg = _ropeSegments[segmentIndex];
-        seg.OldPosition = seg.CurrrentPosition - ((seg.CurrrentPosition - seg.OldPosition) + impulse);
-        _ropeSegments[segmentIndex] = seg;
     }
     void HandleCollisions()
     {
