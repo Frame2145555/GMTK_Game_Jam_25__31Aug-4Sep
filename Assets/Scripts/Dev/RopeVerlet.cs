@@ -9,18 +9,35 @@ using UnityEngine.UIElements;
 public class RopeVerlet : MonoBehaviour
 {
     [System.Serializable]
-    public struct RopeSegment
+    public class RopePoint
     {
         public Vector2 CurrrentPosition;
         public Vector2 OldPosition;
-        public float mass;
-        public float Tension;
+        public float Mass;
 
-        public RopeSegment(Vector2 pos)
+        public RopePoint(Vector2 pos, float mass)
         {
             CurrrentPosition = pos;
             OldPosition = pos;
-            mass = 1;
+            Mass = 1;
+        }
+
+        public float InvertMass() => 1 / Mass;
+    }
+
+    [System.Serializable]
+    public class RopeSegment
+    {
+        public RopePoint A;
+        public RopePoint B;
+        public float RestLength;
+        public float Tension;
+
+        public RopeSegment(RopePoint a, RopePoint b, float restLength)
+        {
+            A = a;
+            B = b;
+            RestLength = restLength;
             Tension = 0;
         }
     }
@@ -28,6 +45,7 @@ public class RopeVerlet : MonoBehaviour
     [Header("Rope")]
     [SerializeField] int numberOfRopeSegment = 50;
     [SerializeField] float segmentLength = 0.225f;
+    [SerializeField] int pointMass = 1;
 
     [Header("Physics")]
     [SerializeField] Vector2 gravityForce = new Vector2(0f, -2f);
@@ -36,6 +54,8 @@ public class RopeVerlet : MonoBehaviour
     [SerializeField] float collisionRadius = 0.1f;
     [SerializeField] float bounceFactor = 0.1f;
     [SerializeField] float correctionClampAmount = 0.1f;
+
+    [SerializeField] Rigidbody2D tailRigidBody;
 
     [Header("Constraints")]
     [SerializeField] int constrainPerUpdate = 50;
@@ -49,13 +69,23 @@ public class RopeVerlet : MonoBehaviour
     [Header("Optimizaions")]
     [SerializeField] int _collisionSegmentInterval = 2;
 
-    [SerializeField] Vector3 _ropeStartPoint;
+    [SerializeField] Vector3 RopeStartPoint;
 
-    private LineRenderer _lineRenderer;
-    public List<RopeSegment> _ropeSegments = new List<RopeSegment>();
+    private LineRenderer lineRenderer;
+    public List<RopePoint> ropePoints = new List<RopePoint>();
+    public List<RopeSegment> ropeSegments = new List<RopeSegment>();
 
-    public Vector3 HeadPosition { get => _ropeSegments[0].CurrrentPosition; } 
-    public Vector3 TailPosition { get => _ropeSegments[numberOfRopeSegment - 1].CurrrentPosition; } 
+    public Vector3 HeadPosition { get => ropePoints[0].CurrrentPosition; } 
+    public Vector3 TailPosition { get => ropePoints[ropePoints.Count - 1].CurrrentPosition; }
+    
+    [ContextMenu("Update Mass")]
+    void UpdateMass()
+    {
+        foreach (var point in ropePoints)
+        {
+            point.Mass = pointMass;
+        }
+    }
 
     public void FixedHeadTo(Transform t)
     {
@@ -70,37 +100,50 @@ public class RopeVerlet : MonoBehaviour
 
     void Awake()
     {
-        _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.positionCount = numberOfRopeSegment;
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = numberOfRopeSegment + 1;
 
-        Vector3 ropeStartPoint = _ropeStartPoint;
-        for (int i = 0; i < numberOfRopeSegment; i++)
-        {
-            _ropeSegments.Add(new RopeSegment(_ropeStartPoint));
-            ropeStartPoint.y -= segmentLength;
-        }
+        BuildRope();
 
     }
+
+    private void BuildRope()
+    {
+        Vector3 refRopeStartPoint = RopeStartPoint;
+        int pointCount = numberOfRopeSegment + 1;
+        int segmentCount = numberOfRopeSegment;
+
+        for (int i = 0; i < pointCount; i++)
+        {
+            ropePoints.Add(new RopePoint(RopeStartPoint, pointMass));
+            refRopeStartPoint.y -= segmentLength;
+        }
+
+        for (int i = 0; i < segmentCount; i++)
+        {
+            ropeSegments.Add(new RopeSegment(ropePoints[i], ropePoints[i + 1], segmentLength));
+        }
+    }
+
     void DrawRope()
     {
-        Vector3[] ropePositions = new Vector3[numberOfRopeSegment];
-        for (int i = 0; i < _ropeSegments.Count; i++)
+        Vector3[] ropePositions = new Vector3[ropePoints.Count];
+        for (int i = 0; i < ropePoints.Count; i++)
         {
-            ropePositions[i] = _ropeSegments[i].CurrrentPosition;
+            ropePositions[i] = ropePoints[i].CurrrentPosition;
         }
-        _lineRenderer.SetPositions(ropePositions);
+        lineRenderer.SetPositions(ropePositions);
     }
     void Simulate()
     {
-        for (int i = 0; i < _ropeSegments.Count; i++)
+        for (int i = 0; i < ropePoints.Count; i++)
         {
-            RopeSegment segment = _ropeSegments[i];
-            Vector2 velocity = (segment.CurrrentPosition - segment.OldPosition) * dampingFactor;
+            RopePoint p = ropePoints[i];
+            Vector2 velocity = (p.CurrrentPosition - p.OldPosition) * dampingFactor;
 
-            segment.OldPosition = segment.CurrrentPosition;
-            segment.CurrrentPosition += velocity;
-            segment.CurrrentPosition += gravityForce * Time.fixedDeltaTime;
-            _ropeSegments[i] = segment;
+            p.OldPosition = p.CurrrentPosition;
+            p.CurrrentPosition += velocity;
+            p.CurrrentPosition += p.Mass * gravityForce * Time.fixedDeltaTime * Time.fixedDeltaTime;
         }
     }
     void Constraints()
@@ -108,90 +151,57 @@ public class RopeVerlet : MonoBehaviour
         //fixed the positions
         if (isHeadFixed)
         {
-            RopeSegment refHead = _ropeSegments[0];
+            RopePoint refHead = ropePoints[0];
             refHead.CurrrentPosition = headFixedTarget.position;
-            _ropeSegments[0] = refHead;
 
         }
 
         if (isTailFixed)
         {
-            int tailIndex = _ropeSegments.Count - 1;
+            int tailIndex = ropePoints.Count - 1;
 
-            RopeSegment refTail = _ropeSegments[tailIndex];
+            RopePoint refTail = ropePoints[tailIndex];
             refTail.CurrrentPosition = tailFixedTransform.position;
-            _ropeSegments[tailIndex] = refTail;
-
         }
 
         //apply correction to each segment
-        for (int i = 0; i < numberOfRopeSegment - 1; i++)
+        foreach (var segment in ropeSegments)
         {
-            //get the structs pair
-            RopeSegment segment_A = _ropeSegments[i];
-            RopeSegment segment_B = _ropeSegments[i + 1];
+            RopePoint point_A = segment.A;
+            RopePoint point_B = segment.B;
 
             //calculate stretch
-            float dist = (segment_A.CurrrentPosition - segment_B.CurrrentPosition).magnitude;
-            float stretch = dist - segmentLength;
+            float dist = (point_A.CurrrentPosition - point_B.CurrrentPosition).magnitude;
+            float stretch = dist - segment.RestLength;
 
             //calculate invmass
-            float invMass_A = 1 / segment_A.mass;
-            float invMass_B = 1 / segment_B.mass;
+            float invMass_A = point_A.InvertMass();
+            float invMass_B = point_B.InvertMass();
             float totalInvMass = invMass_A + invMass_B;
 
-            Vector2 changeDir = (segment_A.CurrrentPosition - segment_B.CurrrentPosition).normalized;
+            Vector2 changeDir = (point_A.CurrrentPosition - point_B.CurrrentPosition).normalized;
             
             //calculate correction value
-            Vector2 totalCorrection = changeDir * stretch;
+            Vector2 totalCorrection = changeDir * stretch * stiffness;
             Vector2 correction_A = totalCorrection * (invMass_A / totalInvMass);
             Vector2 correction_B = totalCorrection * (invMass_B / totalInvMass);
 
             //apply correction value
-            segment_A.CurrrentPosition -= correction_A;
-            segment_B.CurrrentPosition += correction_B;
-
-            int firstSegmentPairIndex = 0;
-            if (isHeadFixed && i == firstSegmentPairIndex)
-            {
-                segment_A.CurrrentPosition += correction_A;
-                segment_B.CurrrentPosition += correction_A;
-            }
-
-            int lastSegmentPairIndex = numberOfRopeSegment - 2;
-            if (isHeadFixed && i == lastSegmentPairIndex)
-            {
-                segment_A.CurrrentPosition -= correction_B;
-                segment_B.CurrrentPosition -= correction_B;
-            }
+            point_A.CurrrentPosition -= correction_A;
+            point_B.CurrrentPosition += correction_B;
 
             //calculate tension
             float tension = 0;
             if (stretch > 0f)
             {
-                tension = stiffness * stretch; // Or whatever factor you choose
+                tension = stiffness * stretch; 
             }
 
-            //apply the tension
-            //first
-            if (i == firstSegmentPairIndex)
-            {
-                segment_B.Tension = tension;
-            }
-            else if (i == lastSegmentPairIndex)
-            {
-                segment_A.Tension = (segment_A.Tension + tension) /2;
-            }
-            else
-            {
-                segment_A.Tension = (segment_A.Tension + tension) / 2;
-                segment_B.Tension = tension;
-            }
-
-                //Apply back the struct pair
-                _ropeSegments[i] = segment_A;
-            _ropeSegments[i + 1] = segment_B;
+            segment.Tension = tension;
         }
+
+        RigidbodyHandle();
+
     }
 
     // Update is called once per frame
@@ -207,41 +217,72 @@ public class RopeVerlet : MonoBehaviour
         {
             Constraints();
 
+
             if (i % _collisionSegmentInterval == 0)
             {
                 HandleCollisions();
             }
         }
     }
+
+    private void RigidbodyHandle()
+    {
+        RopeSegment lastSegment = ropeSegments[ropeSegments.Count - 1];
+        
+        Vector2 dirVector = (lastSegment.B.CurrrentPosition - lastSegment.A.CurrrentPosition).normalized;
+        
+        Vector2 force = lastSegment.Tension * -dirVector; 
+        
+        tailRigidBody.AddForce(force);
+        lastSegment.B.CurrrentPosition = tailRigidBody.position;
+    }
+
     void HandleCollisions()
     {
-        for (int i = 0; i < _ropeSegments.Count; i++)
+        foreach (var point in ropePoints)
         {
-            RopeSegment segment = _ropeSegments[i];
-            Vector2 velocity = segment.CurrrentPosition - segment.OldPosition;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(segment.CurrrentPosition, collisionRadius, collisionMask);
+            Vector2 oldPos = point.OldPosition;
+            Vector2 newPos = point.CurrrentPosition;
+            Vector2 vel = newPos - oldPos;
+            Vector2 dir = vel.normalized;
+            float dist = vel.magnitude;
 
-            foreach (Collider2D collider in colliders)
+            if (dist <= 0f) continue;
+
+            RaycastHit2D hit = Physics2D.CircleCast(oldPos, collisionRadius, dir, dist, collisionMask);
+
+            if (hit.collider != null)
             {
-                Vector2 closestPoint = collider.ClosestPoint(segment.CurrrentPosition);
-                float distance = Vector2.Distance(segment.CurrrentPosition, closestPoint);
-
-                if (distance < collisionRadius)
-                {
-                    Vector2 normal = (segment.CurrrentPosition - closestPoint).normalized;
-                    if (normal == Vector2.zero)
-                    {
-                        normal = (segment.CurrrentPosition - (Vector2)collider.transform.position).normalized;
-
-                    }
-                    float depth = collisionRadius - distance;
-                    segment.CurrrentPosition += normal * depth;
-
-                    velocity = Vector2.Reflect(velocity, normal) * bounceFactor;
-                }
+                point.OldPosition = point.CurrrentPosition;
+                point.CurrrentPosition = hit.point + hit.normal * collisionRadius;
             }
-            segment.OldPosition = segment.CurrrentPosition - velocity;
-            _ropeSegments[i] = segment;
+
+            //Vector2 oldPos = point.OldPosition;
+            //Vector2 newPos = point.CurrrentPosition;
+            //Vector2 vel = newPos - oldPos;
+            //Collider2D[] colliders = Physics2D.OverlapCircleAll(point.CurrrentPosition, collisionRadius, collisionMask);
+
+            //foreach (Collider2D collider in colliders)
+            //{
+            //    Vector2 closestPoint = collider.ClosestPoint(point.CurrrentPosition);
+            //    float distance = Vector2.Distance(point.CurrrentPosition, closestPoint);
+
+            //    if (distance < collisionRadius)
+            //    {
+            //        Vector2 normal = (point.CurrrentPosition - closestPoint).normalized;
+            //        if (normal == Vector2.zero)
+            //        {
+            //            normal = (point.CurrrentPosition - (Vector2)collider.transform.position).normalized;
+
+            //        }
+            //        float depth = collisionRadius - distance;
+            //        point.CurrrentPosition += normal * depth;
+
+            //        vel = Vector2.Reflect(vel, normal) * bounceFactor;
+            //    }
+            //}
+
+            //point.OldPosition = point.CurrrentPosition - vel;
         }
     }
 
@@ -250,7 +291,7 @@ public class RopeVerlet : MonoBehaviour
         float sum = 0;
         for (int i = 0; i < numberOfRopeSegment-1; i++)
         {
-            sum += (_ropeSegments[i].CurrrentPosition - _ropeSegments[i + 1].CurrrentPosition).magnitude;
+            sum += (ropePoints[i].CurrrentPosition - ropePoints[i + 1].CurrrentPosition).magnitude;
         }
         return sum;
     }
