@@ -147,31 +147,36 @@ public class RopeVerlet : MonoBehaviour
         {
             RopeSegment segment = _ropeSegments[i];
             Vector2 velocity = segment.CurrrentPosition - segment.OldPosition;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(segment.CurrrentPosition, _collisionRadius, _collisionMask);
+            float distance = velocity.magnitude;
 
-            foreach (Collider2D collider in colliders)
+            if (distance > 0.0001f)
             {
-                Vector2 closestPoint = collider.ClosestPoint(segment.CurrrentPosition);
-                float distance = Vector2.Distance(segment.CurrrentPosition, closestPoint);
+                RaycastHit2D hit = Physics2D.CircleCast(
+                    segment.OldPosition,
+                    _collisionRadius,
+                    velocity.normalized,
+                    distance,
+                    _collisionMask
+                );
 
-                if (distance < _collisionRadius)
+                if (hit.collider != null)
                 {
-                    Vector2 normal = (segment.CurrrentPosition - closestPoint).normalized;
-                    if (normal == Vector2.zero)
-                    {
-                        normal = (segment.CurrrentPosition - (Vector2)collider.transform.position).normalized;
+                    Vector2 normal = hit.normal;
+                    Vector2 point = hit.point;
 
-                    }
-                    float depth = _collisionRadius - distance;
-                    segment.CurrrentPosition += normal * depth;
+                    // Offset the segment slightly out of collision
+                    segment.CurrrentPosition = point + normal * _collisionRadius;
 
+                    // Reflect the velocity
                     velocity = Vector2.Reflect(velocity, normal) * _bounceFactor;
                 }
             }
+
             segment.OldPosition = segment.CurrrentPosition - velocity;
             _ropeSegments[i] = segment;
         }
     }
+
 
     public float Length()
     {
