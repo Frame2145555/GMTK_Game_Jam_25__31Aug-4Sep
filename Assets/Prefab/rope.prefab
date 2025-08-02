@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9002497432427387128}
-  - component: {fileID: 5319332371697856009}
   - component: {fileID: 8069661516057297915}
+  - component: {fileID: 5319332371697856009}
   m_Layer: 0
-  m_Name: Rope
+  m_Name: rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8069661516057297915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715126716453907684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8d8e6c927e5534c90cb7c7be46d8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRopeSegmentOnStart: 50
+  segmentLength: 0.05
+  pointMass: 3
+  maxLength: 5
+  currentLength: 0
+  gravityForce: {x: 0, y: -10}
+  dampingFactor: 0.98
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  collisionRadius: 0.1
+  bounceFactor: 0.01
+  correctionClampAmount: 0.1
+  constrainPerUpdate: 50
+  stiffness: 0.6
+  isHeadFixed: 0
+  headFixedTransform: {fileID: 0}
+  headRigidBody: {fileID: 0}
+  headPullForceByThousand: 30
+  isTailFixed: 0
+  tailFixedTransform: {fileID: 0}
+  tailRigidBody: {fileID: 0}
+  tailPullForceByThousand: 50
+  _collisionSegmentInterval: 1
+  intersectionInterval: 2
+  fixUpdateCountMod10: 0
+  RopeStartPoint: {x: 0, y: 0, z: 0}
+  ropePoints: []
+  ropeSegments: []
 --- !u!120 &5319332371697856009
 LineRenderer:
   serializedVersion: 2
@@ -140,44 +181,3 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &8069661516057297915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7715126716453907684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8d8e6c927e5534c90cb7c7be46d8a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfRopeSegment: 100
-  segmentLength: 0.05
-  pointMass: 3
-  maxLength: 5
-  currentLength: 0
-  gravityForce: {x: 0, y: -10}
-  dampingFactor: 0.98
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 64
-  collisionRadius: 0.1
-  bounceFactor: 0.01
-  correctionClampAmount: 0.1
-  constrainPerUpdate: 50
-  stiffness: 0.6
-  isHeadFixed: 0
-  headFixedTransform: {fileID: 0}
-  headRigidBody: {fileID: 0}
-  headPullForceByThousand: 30
-  isTailFixed: 0
-  tailFixedTransform: {fileID: 0}
-  tailRigidBody: {fileID: 0}
-  tailPullForceByThousand: 50
-  _collisionSegmentInterval: 1
-  intersectionInterval: 2
-  fixUpdateCountMod10: 0
-  RopeStartPoint: {x: 0, y: 0, z: 0}
-  ropePoints: []
-  ropeSegments: []

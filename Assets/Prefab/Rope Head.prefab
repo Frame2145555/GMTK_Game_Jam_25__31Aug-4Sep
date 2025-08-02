@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451017566658346097}
+  - component: {fileID: 1705493141797714843}
   - component: {fileID: 3557219664666099833}
-  - component: {fileID: 2899198285867143736}
   - component: {fileID: 2722737485119730009}
   m_Layer: 0
   m_Name: Rope Head
@@ -28,12 +28,31 @@ Transform:
   m_GameObject: {fileID: 4214978979064933185}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1705493141797714843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214978979064933185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb21f7727a3bae44b9e0d6b8a10b42d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pullStrengthByThousand: 2.5
+  maxForceByThousand: 5
+  useGravityWhenBeingGrab: 0
+  grabbableRadius: 2
+  isBeingGrab: 0
+  canBeGrab: 1
+  rope: {fileID: 0}
 --- !u!50 &3557219664666099833
 Rigidbody2D:
   serializedVersion: 5
@@ -61,25 +80,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2899198285867143736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4214978979064933185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f6f7a57715cb04cab2971bbe8a2255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pullStrengthByThousand: 2.5
-  maxForceByThousand: 5
-  useGravityWhenBeingGrab: 0
-  grabbableRadius: 2
-  isBeingGrab: 0
-  canBeGrab: 1
-  rope: {fileID: 0}
 --- !u!58 &2722737485119730009
 CircleCollider2D:
   m_ObjectHideFlags: 0

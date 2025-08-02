@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7191326814417786197}
+  - component: {fileID: -3923582737895275911}
   - component: {fileID: 3437329101539319739}
   - component: {fileID: 3448264846354197896}
-  - component: {fileID: 1994759691276626775}
   m_Layer: 6
   m_Name: hook
   m_TagString: Untagged
@@ -34,6 +34,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3923582737895275911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426010308442311420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64335b72843feca44832ab12527eb94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rope: {fileID: 0}
+  nodeRadius: 0.5
+  checkerRadius: 0.35
+  passFactor: 0.8
+  checkerCount: 8
+  ropeSegmentSubtract: 10
+  ropeLengthSubtract: 2
 --- !u!212 &3437329101539319739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,24 +144,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &1994759691276626775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426010308442311420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3e6aa65e56d10498861f421b476657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rope: {fileID: 0}
-  mom: {fileID: 0}
-  ropeHead: {fileID: 0}
-  nodeRadius: 0.5
-  checkerRadius: 0.25
-  passFactor: 0.8
-  checkerCount: 8
-  ropeSegmentSubtract: 30
-  ropeLengthSubtract: 3

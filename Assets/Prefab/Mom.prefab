@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 172843415591427833}
   - component: {fileID: 2008153386057549264}
+  - component: {fileID: 6372310508113478406}
   - component: {fileID: 6638560378370935382}
-  - component: {fileID: 4348265703275998464}
   - component: {fileID: 2524186683437204134}
   m_Layer: 0
   m_Name: Mom
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3797496197782879258}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.5, y: -0.5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,6 +90,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6372310508113478406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797496197782879258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2e2b6525ad061408b37343bc4f8c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pullStrengthByThousand: 10
+  maxForceByThousand: 10
+  useGravityWhenBeingGrab: 1
+  grabbableRadius: 2
+  isBeingGrab: 0
+  canBeGrab: 0
+  rope: {fileID: 0}
 --- !u!50 &6638560378370935382
 Rigidbody2D:
   serializedVersion: 5
@@ -117,25 +136,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4348265703275998464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3797496197782879258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566bd89edb7d86c4dbb5c1f30ef68f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pullStrengthByThousand: 10
-  maxForceByThousand: 10
-  useGravityWhenBeingGrab: 1
-  grabbableRadius: 2
-  isBeingGrab: 0
-  canBeGrab: 0
-  rope: {fileID: 0}
 --- !u!58 &2524186683437204134
 CircleCollider2D:
   m_ObjectHideFlags: 0

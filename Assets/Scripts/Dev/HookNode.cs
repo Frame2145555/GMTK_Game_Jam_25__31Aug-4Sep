@@ -2,14 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-public class HangerNode : MonoBehaviour
+public class HookNode : MonoBehaviour
 {
     public class Checker
     {
         public Vector2 Position;
         public float Radius;
         public bool containRopeSegment;
-
+            
         public Checker(Vector2 position,float radius)
         {
             Position = position;
@@ -25,8 +25,8 @@ public class HangerNode : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] RopeVerlet rope;
-    [SerializeField] Grabable mom;
-    [SerializeField] Grabable ropeHead;
+    Grabable mom;
+    Grabable ropeHead;
 
     [Header("Node")]
     [SerializeField] float nodeRadius = 1;
