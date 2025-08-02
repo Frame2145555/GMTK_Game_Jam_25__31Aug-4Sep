@@ -9,7 +9,7 @@ public class Rope : MonoBehaviour
     List<GameObject> segs = new List<GameObject>();
 
     [SerializeField] float segLength = 0.1f;
-    [SerializeField] int batch = 20;
+    [SerializeField] int batch = 10;
 
     [ContextMenu("Make Batch")] 
     void MakeRope()

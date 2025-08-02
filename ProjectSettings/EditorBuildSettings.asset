@@ -6,8 +6,38 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Map/Act_1/Act_1_Map1.unity
+    guid: 5a57364cacb1e224da32f70c05c8c520
+  - enabled: 1
+    path: Assets/Map/Act_1/Act_1_Map2.unity
+    guid: 7a4f730023727d041949894d5367a373
+  - enabled: 1
+    path: Assets/Map/Act_1/Act_1_Map3.unity
+    guid: e9ec8d9fe5dac6249a1072a3525f6fd8
+  - enabled: 1
+    path: Assets/Map/Act_1/Act_1_Map4.unity
+    guid: eb15edb3bfe297a48ad4cb7a732fa6ec
+  - enabled: 1
+    path: Assets/Map/Act_2/Act_2_Map1.unity
+    guid: 8ff7643eaa35bb140b8109651ca491ad
+  - enabled: 1
+    path: Assets/Map/Act_2/Act_2_Map2.unity
+    guid: 3371ca69d1f29c14da3bc8b787249209
+  - enabled: 1
+    path: Assets/Map/Act_2/Act_2_Map3.unity
+    guid: 8110c53c2fefa7f468f819e2f2badb8c
+  - enabled: 1
+    path: Assets/Map/Act_2/Act_2_Map4.unity
+    guid: d8e83cd9702e7c0418384d8ba2e33ca9
+  - enabled: 1
+    path: Assets/Map/Act_2/Act_2_Map5.unity
+    guid: aac0f8ee2a0cdae488a2ec2fc5ee51af
+  - enabled: 1
+    path: Assets/Map/Act_2/Act_2_Map6.unity
+    guid: ebe145ace908a684c98c141206c450e1
+  - enabled: 1
+    path: Assets/Map/Act_2/Win.unity
+    guid: b6413af70b099cd4c91b00081c0a3ad3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
