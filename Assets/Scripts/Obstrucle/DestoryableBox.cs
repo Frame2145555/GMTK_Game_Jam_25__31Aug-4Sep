@@ -20,7 +20,7 @@ public class DestoryableBox : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Mom")
+        if (collision.gameObject.tag == "Player")
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb.linearVelocity.magnitude >= requiredVelocity)

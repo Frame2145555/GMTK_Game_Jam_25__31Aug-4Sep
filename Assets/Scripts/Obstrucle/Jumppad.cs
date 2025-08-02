@@ -14,7 +14,7 @@ public class Jumppad : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Rigidbody2D rb = other.attachedRigidbody;
-        if (rb != null)
+        if (rb != null && other.tag == "Player")
         {
             float angle = transform.eulerAngles.z + 90;
 
