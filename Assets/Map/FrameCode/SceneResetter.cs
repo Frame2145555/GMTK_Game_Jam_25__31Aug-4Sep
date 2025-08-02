@@ -6,6 +6,11 @@ public class SceneResetter : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnim;
 
+    private void Start()
+    {
+        transitionAnim = GameObject.Find("Scene Transition/Canvas/Black").GetComponent<Animator>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
