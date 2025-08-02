@@ -13,7 +13,7 @@ public class Grabable : MonoBehaviour
     [SerializeField] protected bool isBeingGrab = false;
     [SerializeField] protected bool canBeGrab = true;
 
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
     float initialRbGravity = 0;
 
     public Action onGrab;
@@ -54,7 +54,7 @@ public class Grabable : MonoBehaviour
         }
     }
 
-    private void PullObject()
+    protected virtual void PullObject()
     {
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 diff = mouseWorldPosition - rb.position;
