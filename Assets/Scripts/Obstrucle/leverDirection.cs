@@ -8,10 +8,12 @@ public class LeverDirection : MonoBehaviour
 
     [Header("Config")]
     public float rotateSpeed = 100f;
-
     private float currentAngle = 0f;
-
-
+    void Start()
+    {
+        currentAngle = minAngle;
+        transform.localRotation = Quaternion.Euler(0, 0, currentAngle);
+    }
     void Update()
     {
         float input = Input.GetAxis("Horizontal"); // Left/Right Arrow or A/D
@@ -22,17 +24,15 @@ public class LeverDirection : MonoBehaviour
 
         CheckLeverLimit();
     }
-     void CheckLeverLimit()
+    void CheckLeverLimit()
     {
         if (Mathf.Approximately(currentAngle, maxAngle))
         {
             Debug.Log("Lever reached max angle!");
-            // Place logic here for when lever reaches max angle
         }
         else if (Mathf.Approximately(currentAngle, minAngle))
         {
             Debug.Log("Lever reached min angle!");
-            // Place logic here for when lever reaches min angle
         }
     }
 }
