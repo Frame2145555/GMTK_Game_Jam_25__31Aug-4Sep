@@ -13,7 +13,7 @@ public class Grabable : MonoBehaviour
     [SerializeField] protected bool isBeingGrab = false;
     [SerializeField] protected bool canBeGrab = true;
 
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
     float initialRbGravity = 0;
 
     public Action onGrab;

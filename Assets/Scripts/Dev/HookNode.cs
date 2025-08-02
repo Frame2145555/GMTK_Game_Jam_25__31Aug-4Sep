@@ -112,6 +112,8 @@ public class HookNode : MonoBehaviour
 
     public void Release()
     {
+        if (!haveRope)
+            return;
         rope.DetachHead();
         rope.FixedHeadTo(ropeHead.gameObject);
         rope.AddSegments(ropeSegmentSubtract);
