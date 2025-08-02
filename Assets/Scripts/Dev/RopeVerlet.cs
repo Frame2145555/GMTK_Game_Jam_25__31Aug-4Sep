@@ -182,6 +182,7 @@ public class RopeVerlet : MonoBehaviour
 
     private void BuildRope()
     {
+        RopeStartPoint = transform.position;
         Vector3 refRopeStartPoint = RopeStartPoint;
         int pointCount = numberOfRopeSegmentOnStart + 1;
         int segmentCount = numberOfRopeSegmentOnStart;
