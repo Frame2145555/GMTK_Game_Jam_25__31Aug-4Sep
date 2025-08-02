@@ -23,7 +23,7 @@ public class DestoryableBox : MonoBehaviour
         if (collision.gameObject.tag == "Mom")
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb.velocity.magnitude >= requiredVelocity)
+            if (rb.linearVelocity.magnitude >= requiredVelocity)
             {
                 Debug.Log("Destroy");
                 Destroy(gameObject);
