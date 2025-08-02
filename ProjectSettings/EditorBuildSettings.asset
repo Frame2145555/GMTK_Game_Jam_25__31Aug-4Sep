@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Map/Act_1/Act_1_Map4.unity
     guid: eb15edb3bfe297a48ad4cb7a732fa6ec
   - enabled: 1
-    path: Assets/Map/Act_2/Act_2_Map1.unity
+    path: Assets/Map/Act_2/Map5.unity
     guid: 8ff7643eaa35bb140b8109651ca491ad
   - enabled: 1
-    path: Assets/Map/Act_2/Act_2_Map2.unity
+    path: Assets/Map/Act_2/Map6.unity
     guid: 3371ca69d1f29c14da3bc8b787249209
   - enabled: 1
     path: Assets/Map/Act_2/Act_2_Map3.unity

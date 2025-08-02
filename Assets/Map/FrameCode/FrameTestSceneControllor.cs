@@ -8,7 +8,7 @@ public class FrameTestSceneControllor : MonoBehaviour
 
     private void Start()
     {
-        transitionAnim = GameObject.Find("SceneTransition/Canvas/Black").GetComponent<Animator>();
+        transitionAnim = GameObject.Find("Scene Transition/Canvas/Black").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
