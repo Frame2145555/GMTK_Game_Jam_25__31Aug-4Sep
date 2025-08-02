@@ -7,12 +7,17 @@ public class Testing : MonoBehaviour
     [SerializeField] Transform headAttachment;
     [SerializeField] Transform tailAttachment;
 
+    private void Start()
+    {
+        rope.FixedHeadTo(headAttachment.gameObject);
+        rope.FixedTailTo(tailAttachment.gameObject);
+        
+    }
     void Update()
     {
-        rope.FixedHeadTo(headAttachment);
-
-        rope.FixedTailTo(tailAttachment);
-
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+        }
 
     }
 }
