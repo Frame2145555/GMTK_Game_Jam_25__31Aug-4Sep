@@ -6,6 +6,11 @@ public class FrameTestSceneControllor : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnim;
 
+    private void Start()
+    {
+        transitionAnim = GameObject.Find("SceneTransition/Canvas/Black").GetComponent<Animator>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
