@@ -35,20 +35,11 @@ public class CustomCursor : MonoBehaviour
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Vector2 diff = mouseWorldPosition - rb.position;
-            Vector2 dir = diff.normalized;
 
             Vector2 force = diff * forceMultitiler;
 
             if (force.magnitude > maxForce) force = force.normalized * maxForce;
             rb.AddForce(force);
-
-            //rb.MovePosition(Vector2.Lerp(rb.position, worldMousePosition, interpolationFactor));
-
-
-            
-            //Vector2 mouseDetla = Input.mousePositionDelta;
-            //desireMouseDistance = rb.position + mouseDetla * mouseSpeed * Time.fixedDeltaTime;
-            //rb.MovePosition(Vector2.Lerp(rb.position, desireMouseDistance, interpolationFactor));
         }
         else
         {

@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &79604859
 Transform:
   m_ObjectHideFlags: 0
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1f8be4a9bb5064bb47277f23b75e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 870802153}
 --- !u!61 &117730744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -716,6 +715,7 @@ GameObject:
   - component: {fileID: 625090435}
   - component: {fileID: 625090436}
   - component: {fileID: 625090437}
+  - component: {fileID: 625090438}
   m_Layer: 0
   m_Name: hook
   m_TagString: Untagged
@@ -829,6 +829,23 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &625090438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625090434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3e6aa65e56d10498861f421b476657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rope: {fileID: 0}
+  nodeRadius: 0.5
+  checkerRadius: 0.25
+  passFactor: 0.8
+  checkerCount: 8
 --- !u!1 &719683700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1f8be4a9bb5064bb47277f23b75e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 870802153}
 --- !u!61 &873244615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1482,7 +1498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1f8be4a9bb5064bb47277f23b75e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 870802153}
 --- !u!61 &1194651099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1713,7 +1728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8e4145727125847b90d9b7565eb8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 870802153}
 --- !u!58 &1211687436
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1824,7 +1838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1f8be4a9bb5064bb47277f23b75e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 870802153}
 --- !u!61 &1253297720
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2221,7 +2234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1dc39d7ac96fb4f8330367b7eb2b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 870802153}
 --- !u!4 &1843258792
 Transform:
   m_ObjectHideFlags: 0
