@@ -70,4 +70,5 @@ public class CustomCursor : MonoBehaviour
             Cursor.visible = true;
         }
     }
+
 }
