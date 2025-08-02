@@ -25,8 +25,8 @@ public class HookNode : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] RopeVerlet rope;
-    Grabable mom;
-    Grabable ropeHead;
+    Mom mom;
+    RopeHead ropeHead;
 
     [Header("Node")]
     [SerializeField] float nodeRadius = 1;
@@ -107,7 +107,10 @@ public class HookNode : MonoBehaviour
         rope.MaxLength -= ropeLengthSubtract;
         haveRope = true;
         mom.CanBeGrab = true;
+        mom.distanceJoint.enabled = true;
+        mom.distanceJoint.connectedBody = GetComponent<Rigidbody2D>();
         ropeHead.CanBeGrab = false;
+
     }
 
     public void Release()
@@ -121,6 +124,7 @@ public class HookNode : MonoBehaviour
         haveRope = false;
         mom.CanBeGrab = false;
         ropeHead.CanBeGrab = true;
+        mom.distanceJoint.enabled = false;
 
     }
     private void LookForRopePoints()

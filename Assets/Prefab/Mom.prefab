@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6372310508113478406}
   - component: {fileID: 6638560378370935382}
   - component: {fileID: 2524186683437204134}
+  - component: {fileID: 3917226855214072301}
   m_Layer: 0
   m_Name: Mom
   m_TagString: Player
@@ -106,9 +107,25 @@ MonoBehaviour:
   maxForceByThousand: 10
   useGravityWhenBeingGrab: 1
   grabbableRadius: 2
+  clampMouseDistance: 5
   isBeingGrab: 0
   canBeGrab: 0
   rope: {fileID: 0}
+  distanceJoint: {fileID: 0}
+  initialMomemntum: 3
+  reduceSpeed: 2
+  throwingMomentumAmpilfier: 2
+  forceThresholdSquare: 10
+  pullStrengthInitial: 0
+  pullStrengthBuildFactor: 1.2
+  pullStrengthMaximumFactor: 2
+  pullStrengthMinimumFactor: 0.6
+  maxForceDecayFactor: 0
+  maxForceInitial: 0
+  maxForceBuildFactor: 1.2
+  maxForceMaximumFactor: 2
+  maxForceMinimumFactor: 0.6
+  pullStrengthDecayFactor: 0
 --- !u!50 &6638560378370935382
 Rigidbody2D:
   serializedVersion: 5
@@ -172,3 +189,23 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!232 &3917226855214072301
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797496197782879258}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 0
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 5
+  m_MaxDistanceOnly: 0

@@ -9,6 +9,7 @@ public class Grabable : MonoBehaviour
     [SerializeField] protected float maxForceByThousand = 3f;
     [SerializeField] protected bool useGravityWhenBeingGrab = false;
     [SerializeField] float grabbableRadius = 2f;
+    [SerializeField] float clampMouseDistance = 5f;
 
     [SerializeField] protected bool isBeingGrab = false;
     [SerializeField] protected bool canBeGrab = true;
@@ -58,6 +59,7 @@ public class Grabable : MonoBehaviour
     {
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 diff = mouseWorldPosition - rb.position;
+        if (diff.magnitude > clampMouseDistance) diff = diff.normalized * clampMouseDistance;
 
         float pullStrength = pullStrengthByThousand * 1000f;
         float maxForce = maxForceByThousand * 1000f;
