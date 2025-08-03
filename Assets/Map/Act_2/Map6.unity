@@ -565,7 +565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &201796617
 Transform:
   m_ObjectHideFlags: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &625090439
 Rigidbody2D:
   serializedVersion: 5
@@ -1269,7 +1269,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &770341873
 Rigidbody2D:
   serializedVersion: 5
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &1057594387
 Rigidbody2D:
   serializedVersion: 5
@@ -2886,7 +2886,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &1407205797
 Rigidbody2D:
   serializedVersion: 5
@@ -3058,7 +3058,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &1491192214
 Rigidbody2D:
   serializedVersion: 5
@@ -4042,7 +4042,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &1865403423
 Rigidbody2D:
   serializedVersion: 5
