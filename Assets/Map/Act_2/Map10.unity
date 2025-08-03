@@ -530,7 +530,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &88101596
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &492510295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1255,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &636091620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &648332659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &719683700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &754479447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &849013613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,7 +2642,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &927292880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,7 +2836,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &1065942932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,7 +3301,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &1341841385
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,7 +3348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1412572126
 Transform:
   m_ObjectHideFlags: 0
@@ -3539,7 +3539,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &1485304069
 GameObject:
   m_ObjectHideFlags: 0
@@ -4858,7 +4858,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!1 &2068242232
 GameObject:
   m_ObjectHideFlags: 0

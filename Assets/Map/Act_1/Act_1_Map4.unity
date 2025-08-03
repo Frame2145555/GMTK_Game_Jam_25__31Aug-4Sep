@@ -2134,7 +2134,7 @@ MonoBehaviour:
   passFactor: 0.8
   checkerCount: 8
   ropeSegmentSubtract: 10
-  ropeLengthSubtract: 3
+  ropeLengthSubtract: 2
 --- !u!50 &1661681519
 Rigidbody2D:
   serializedVersion: 5
