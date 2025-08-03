@@ -1970,6 +1970,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191181733}
+  - component: {fileID: 1191181735}
+  - component: {fileID: 1191181734}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1992,6 +1994,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191181734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191181732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c534090cd213f4685906ec7792d32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1191181735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191181732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad25786d75069a4492fc2953b43ebd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1197966454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,7 +2532,6 @@ GameObject:
   - component: {fileID: 1366261529}
   - component: {fileID: 1366261528}
   - component: {fileID: 1366261527}
-  - component: {fileID: 1366261526}
   - component: {fileID: 1366261530}
   m_Layer: 0
   m_Name: EventSystem
@@ -2515,18 +2540,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1366261526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366261525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad25786d75069a4492fc2953b43ebd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1366261527
 MonoBehaviour:
   m_ObjectHideFlags: 0

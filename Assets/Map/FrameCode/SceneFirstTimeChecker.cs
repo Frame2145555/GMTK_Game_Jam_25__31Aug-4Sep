@@ -4,7 +4,10 @@ using UnityEngine.SceneManagement;
 public class SceneFirstTimeChecker : SingletonPersistent<SceneFirstTimeChecker>
 {
     private  List<string> visitedScenes = new List<string>();
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     void Start()
     {
         string sceneName = SceneManager.GetActiveScene().name;
