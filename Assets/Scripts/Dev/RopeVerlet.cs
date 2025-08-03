@@ -77,6 +77,7 @@ public class RopeVerlet : MonoBehaviour
     [SerializeField] float collisionRadius = 0.1f;
     [SerializeField] float bounceFactor = 0.1f;
     [SerializeField] float correctionClampAmount = 0.1f;
+    [SerializeField] List<string> destroyTag;
 
     [Header("Constraints")]
     [SerializeField] int constrainPerUpdate = 50;
@@ -212,6 +213,18 @@ public class RopeVerlet : MonoBehaviour
         fixUpdateCountMod10++;
         fixUpdateCountMod10 = fixUpdateCountMod10 % 10;
         RunSolver();
+
+        foreach (var point in ropePoints)
+        {
+            Collider2D[] colls =  Physics2D.OverlapCircleAll(point.CurrentPosition, collisionRadius);
+            foreach (var collider in colls)
+            {
+                if (destroyTag.FindAll((tag) => collider.tag == tag).Count != 0)
+                {
+                    gameObject.SetActive(false);
+                }
+            }
+        }
 
         currentLength = 0;
         foreach (var segment in ropeSegments)
