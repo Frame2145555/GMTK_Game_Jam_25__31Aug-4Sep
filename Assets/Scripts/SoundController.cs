@@ -43,9 +43,11 @@ public class SoundController : SingletonPersistent<SoundController>
     protected override void Awake()
     {
         base.Awake();
+        bgm = GetComponent<AudioSource>();
     }
-    void Start()
+    [SerializeField] AudioSource bgm;
+    void Update()
     {
-
+        bgm.volume = MusicValue / 100;
     }
 }
