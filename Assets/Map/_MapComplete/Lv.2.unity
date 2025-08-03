@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -16.7
       objectReference: {fileID: 0}
+    - target: {fileID: 4578255458007168691, guid: 1f344b093801f5843ab5e5fc07df05ff, type: 3}
+      propertyPath: m_SortingOrder
+      value: -34
+      objectReference: {fileID: 0}
     - target: {fileID: 5142958856743143105, guid: 1f344b093801f5843ab5e5fc07df05ff, type: 3}
       propertyPath: m_LocalScale.x
       value: 131.509
