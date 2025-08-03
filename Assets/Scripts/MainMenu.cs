@@ -37,6 +37,7 @@ public class MainMenu : MonoBehaviour
     void NextScene()
     {
         Debug.Log("ChangeScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     void SetActiveObject(GameObject o_value, bool value)
     {
@@ -47,9 +48,5 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Exit");
         Application.Quit();
-    }
-    void Update()
-    {
-        
     }
 }

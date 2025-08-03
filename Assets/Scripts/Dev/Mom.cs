@@ -5,6 +5,8 @@ public class Mom : Grabable
 {
     [SerializeField] RopeVerlet rope;
     [SerializeField] public DistanceJoint2D distanceJoint;
+    [Header("Animator")]
+    [SerializeField] Animator animator;
 
     [Header("throwing momentum")]
     [SerializeField] float initialMomemntum = 10f;
@@ -19,7 +21,7 @@ public class Mom : Grabable
 
     [SerializeField] float pullStrengthInitial;
     [SerializeField] float pullStrengthBuildFactor = 1.2f;
-    [SerializeField] float pullStrengthMaximumFactor =2;
+    [SerializeField] float pullStrengthMaximumFactor = 2;
     [SerializeField] float pullStrengthMinimumFactor = 0.6f;
     [SerializeField] float maxForceDecayFactor;
 
@@ -28,6 +30,7 @@ public class Mom : Grabable
     [SerializeField] float maxForceMaximumFactor = 2;
     [SerializeField] float maxForceMinimumFactor = 0.6f;
     [SerializeField] float pullStrengthDecayFactor;
+    
 
     protected override void Start()
     {
@@ -45,7 +48,7 @@ public class Mom : Grabable
         base.Update();
         Momemntum();
 
-        if(isBeingGrab)
+        if (isBeingGrab)
         {
             Debug.Log(rb.linearVelocity.sqrMagnitude);
             if (rb.linearVelocity.sqrMagnitude > forceThresholdSquare)
@@ -53,7 +56,7 @@ public class Mom : Grabable
                 pullStrengthByThousand += pullStrengthBuildFactor * Time.deltaTime;
                 if (pullStrengthByThousand > pullStrengthInitial * pullStrengthMaximumFactor) pullStrengthByThousand = pullStrengthInitial * pullStrengthMaximumFactor;
 
-                    maxForceByThousand += maxForceBuildFactor * Time.deltaTime;
+                maxForceByThousand += maxForceBuildFactor * Time.deltaTime;
                 if (maxForceByThousand > maxForceInitial * maxForceMaximumFactor) maxForceByThousand = maxForceInitial * maxForceMaximumFactor;
             }
             else
@@ -75,7 +78,7 @@ public class Mom : Grabable
         momentum -= Time.deltaTime * reduceSpeed;
         if (momentum < 0)
         {
-            doMomentum = false ;
+            doMomentum = false;
             return;
         }
         Vector2 newVel = currentVel * momentum;
@@ -106,5 +109,9 @@ public class Mom : Grabable
         Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = (mouseWorld - rb.position).normalized;
         currentVel = rb.linearVelocity.magnitude * throwingMomentumAmpilfier * dir;
+    }
+    public void Respawn()
+    {
+
     }
 }

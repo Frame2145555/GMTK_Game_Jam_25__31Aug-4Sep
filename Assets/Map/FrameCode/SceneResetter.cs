@@ -19,7 +19,7 @@ public class SceneResetter : MonoBehaviour
         }
     }
 
-    IEnumerator ReloadScene()
+    public IEnumerator ReloadScene()
     {
         transitionAnim.SetTrigger("End");
         yield return new WaitForSeconds(1f);
