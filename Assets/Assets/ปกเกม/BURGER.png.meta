@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BURGER_0: 9110515175589374682
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
