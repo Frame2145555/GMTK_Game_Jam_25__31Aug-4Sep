@@ -44,6 +44,7 @@ public class SoundController : SingletonPersistent<SoundController>
     {
         base.Awake();
         bgm = GetComponent<AudioSource>();
+        MusicValue = 20f;
     }
     [SerializeField] AudioSource bgm;
     void Update()
