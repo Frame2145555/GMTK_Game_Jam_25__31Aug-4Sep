@@ -2,11 +2,9 @@
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEngine.Rendering.HableCurve;
 
 public class RopeVerlet : MonoBehaviour
 {
