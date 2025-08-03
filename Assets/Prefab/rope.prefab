@@ -58,6 +58,8 @@ MonoBehaviour:
   collisionRadius: 0.1
   bounceFactor: 0.01
   correctionClampAmount: 0.1
+  destroyTag:
+  - Kill Rope
   constrainPerUpdate: 50
   stiffness: 0.6
   isHeadFixed: 0
